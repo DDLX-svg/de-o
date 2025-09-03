@@ -17,9 +17,19 @@
         }
       }
     </script>
+    <style>
+      /* Ngăn chặn "flash of unstyled content" */
+      #root.loading {
+        opacity: 0;
+      }
+      #root {
+        /* Thêm hiệu ứng chuyển đổi mượt mà khi nội dung xuất hiện */
+        transition: opacity 0.4s ease-in-out;
+      }
+    </style>
   </head>
   <body>
-    <div id="root"></div>
+    <div id="root" class="loading"></div>
     <!-- Thay đổi 'type' thành 'text/babel' và thêm 'data-type' để Babel xử lý -->
     <script type="text/babel" data-type="module" src="/index.tsx"></script>
   </body>

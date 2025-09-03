@@ -1,8 +1,18 @@
-
-import React from 'react';
+import React, { useEffect } from 'react';
 import ReactDOM from 'react-dom/client';
 
 const App: React.FC = () => {
+  useEffect(() => {
+    // Effect này chạy một lần sau khi component được gắn kết.
+    // Chúng ta xóa class 'loading' khỏi phần tử gốc để làm mờ nội dung.
+    // Điều này đảm bảo rằng Tailwind JIT đã có thời gian xử lý các class
+    // và áp dụng style, ngăn chặn "flash of unstyled content" (FOUC).
+    const rootElement = document.getElementById('root');
+    if (rootElement) {
+      setTimeout(() => rootElement.classList.remove('loading'), 100);
+    }
+  }, []);
+
   return (
     <div className="bg-gray-900 text-white min-h-screen flex flex-col items-center justify-center font-sans p-4">
       <main className="bg-gray-800 shadow-2xl rounded-xl p-8 max-w-lg w-full text-center border border-gray-700">
